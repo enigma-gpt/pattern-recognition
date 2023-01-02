@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'pattern-recognition'
-include('pattern-recognition-webapi')
+include 'pattern-recognition-webapi'
