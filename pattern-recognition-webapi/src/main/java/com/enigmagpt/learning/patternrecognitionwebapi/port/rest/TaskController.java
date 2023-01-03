@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @Slf4j
-@RestController("/task")
+@RestController
 class TaskController {
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
+    @PostMapping("/task")
     public void create(TaskDto taskDto) {
         log.info("create!");
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping
+    @GetMapping("/task")
     public List<TaskDto> getAll() {
         log.info("Get All tasks");
         return List.of();

@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
-@RestController("/result")
+@RestController
 class ResultController {
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping
+    @GetMapping("/result")
     public TaskResultDto getTaskResult() {
         log.info("return task result");
         return new TaskResultDto();
