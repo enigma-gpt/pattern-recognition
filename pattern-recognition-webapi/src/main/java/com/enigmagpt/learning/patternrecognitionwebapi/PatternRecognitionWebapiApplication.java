@@ -1,8 +1,9 @@
 package com.enigmagpt.learning.patternrecognitionwebapi;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+@OpenAPIDefinition
 @SpringBootApplication
 class PatternRecognitionWebapiApplication {
 
