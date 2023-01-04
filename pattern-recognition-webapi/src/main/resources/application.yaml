@@ -3,6 +3,20 @@ server:
   servlet:
     context-path: "/"
 
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  cloud:
+    stream:
+      bindings:
+        employeeRegistrationChannel: employeeRegistrations
+      default:
+        contentType: application/json
+
 logging:
   level:
     root: INFO
