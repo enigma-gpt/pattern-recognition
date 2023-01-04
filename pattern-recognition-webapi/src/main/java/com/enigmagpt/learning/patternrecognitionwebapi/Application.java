@@ -5,10 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 @OpenAPIDefinition
 @SpringBootApplication
-class PatternRecognitionWebapiApplication {
+class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PatternRecognitionWebapiApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
