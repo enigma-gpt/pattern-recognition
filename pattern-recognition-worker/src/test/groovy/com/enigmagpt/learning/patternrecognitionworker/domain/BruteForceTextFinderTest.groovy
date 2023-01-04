@@ -1,7 +1,9 @@
 package com.enigmagpt.learning.patternrecognitionworker.domain
 
+import groovy.util.logging.Slf4j
 import spock.lang.Specification
 
+@Slf4j
 class BruteForceTextFinderTest extends Specification {
 
     BruteForceTextFinder finder = new BruteForceTextFinder()
