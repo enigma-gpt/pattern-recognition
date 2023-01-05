@@ -12,10 +12,11 @@ spring:
 
   cloud:
     stream:
+      source: output
       bindings:
-        employeeRegistrationChannel: employeeRegistrations
-      default:
-        contentType: application/json
+        output-out-0:
+          destination: destGT
+      default-binder: rabbit
 
 logging:
   level:
