@@ -10,3 +10,6 @@ sudo systemctl start docker
 sudo docker-compose up -d
 
 
+### RabbitMQ
+Console http://localhost:15672/
+default pass: guest, guest

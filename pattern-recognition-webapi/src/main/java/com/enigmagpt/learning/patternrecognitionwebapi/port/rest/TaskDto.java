@@ -1,4 +1,4 @@
 package com.enigmagpt.learning.patternrecognitionwebapi.port.rest;
 
-class TaskDto {
+record TaskDto(String input, String pattern) {
 }

@@ -3,6 +3,21 @@ server:
   servlet:
     context-path: "/"
 
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  cloud:
+    stream:
+      source: input
+      bindings:
+        input-in-0:
+          destination: destGT
+      default-binder: rabbit
+
 logging:
   level:
     root: INFO
