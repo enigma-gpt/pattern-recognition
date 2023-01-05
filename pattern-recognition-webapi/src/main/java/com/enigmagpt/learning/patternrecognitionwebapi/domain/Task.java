@@ -1,4 +1,5 @@
 package com.enigmagpt.learning.patternrecognitionwebapi.domain;
 
-class Task {
-}
+import java.io.Serializable;
+
+public record Task (String input, String pattern) implements TaskAdapter, Serializable {}

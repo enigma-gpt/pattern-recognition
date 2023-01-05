@@ -1,11 +1,11 @@
 package com.enigmagpt.learning.patternrecognitionwebapi.port.rest;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import com.enigmagpt.learning.patternrecognitionwebapi.domain.TaskAdapter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.tools.ant.Task;
 import org.springframework.cloud.stream.function.StreamBridge;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,25 +13,33 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
+@RequiredArgsConstructor
 @Slf4j
 @RestController
 class TaskController {
 
-    @Autowired
-    private StreamBridge streamBridge;
+    private final RedisTemplate<String, Task> redisTemplate;
+
+    private final StreamBridge streamBridge;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/task")
-    public void create(TaskDto taskDto) {
-        log.info("create!");
-        streamBridge.send("output-out-0", "str");
+    public String create(TaskDto taskDto) {
+        log.info("Create called with parameters input {} pattern {}", taskDto.input(), taskDto.pattern());
+        UUID uuid = UUID.randomUUID();
+        redisTemplate.opsForHash().put("Tasks", uuid.toString(), TaskAdapter.of(taskDto));
+        log.info("Created an entry with a key {}", redisTemplate.opsForHash().entries("Tasks"));
+        streamBridge.send("output-out-0", TaskAdapter.of(taskDto));
+        log.info("Message was sent with data {}", taskDto );
+        return uuid.toString();
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/task")
-    public List<TaskDto> getAll() {
+    public List<Object> getAll() {
         log.info("Get All tasks");
-        return List.of();
+        return redisTemplate.opsForHash().values("Tasks");
     }
 }
