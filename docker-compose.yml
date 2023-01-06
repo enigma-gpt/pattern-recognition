@@ -9,9 +9,6 @@ services:
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/home/grzegorz/dev/rabbitmq/data
       - ~/.docker-conf/rabbitmq/log/:/home/grzegorz/dev/rabbitmq/log
-    environment:
-      RABBITMQ_DEFAULT_USER: user
-      RABBITMQ_DEFAULT_PASSWORD: user
 
   cache:
     image: redis:6.2-alpine

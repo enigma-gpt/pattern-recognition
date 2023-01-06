@@ -1,10 +1,10 @@
-package com.enigmagpt.learning.patternrecognitionworker;
+package com.enigmagpt.learning.patternrecognitionwebapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApplicationTests {
+class ApplicationWebApiTests {
 
 	@Test
 	void contextLoads() {
