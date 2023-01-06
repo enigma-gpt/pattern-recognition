@@ -1,5 +1,6 @@
 package com.enigmagpt.learning.patternrecognitionwebapi.port.rest;
 
+import com.enigmagpt.learning.patternrecognitionwebapi.domain.Result;
 import com.enigmagpt.learning.patternrecognitionwebapi.domain.TaskAdapter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +21,7 @@ import java.util.UUID;
 @RestController
 class TaskController {
 
-    private final RedisTemplate<String, Task> redisTemplate;
+    private final RedisTemplate<String, Result> redisTemplate;
 
     private final StreamBridge streamBridge;
 
@@ -29,8 +30,8 @@ class TaskController {
     public String create(TaskDto taskDto) {
         log.info("Create called with parameters input {} pattern {}", taskDto.input(), taskDto.pattern());
         UUID uuid = UUID.randomUUID();
-        redisTemplate.opsForHash().put("Tasks", uuid.toString(), TaskAdapter.of(taskDto));
-        log.info("Created an entry with a key {}", redisTemplate.opsForHash().entries("Tasks"));
+        redisTemplate.opsForHash().put("Results", uuid.toString(), new Result( 0));
+        log.info("Created an entry with a key {}", redisTemplate.opsForHash().entries("Results"));
         streamBridge.send("output-out-0", TaskAdapter.of(taskDto));
         log.info("Message was sent with data {}", taskDto );
         return uuid.toString();

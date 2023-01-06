@@ -1,9 +1,10 @@
 package com.enigmagpt.learning.patternrecognitionworker.port.amqp;
 
+import com.enigmagpt.learning.patternrecognitionworker.domain.Executor;
 import com.enigmagpt.learning.patternrecognitionworker.domain.Task;
-import com.enigmagpt.learning.patternrecognitionworker.domain.TextFinderExecutor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,9 @@ import java.util.function.Consumer;
 @Service
 public class TaskConsumer {
 
-    private final TextFinderExecutor textFinderExecutor;
+    private final Executor textFinderExecutor;
+
+    private final StreamBridge streamBridge;
 
     @Bean
     public Consumer<Task> input() {

@@ -1,5 +1,6 @@
 package com.enigmagpt.learning.patternrecognitionworker.domain;
 
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -7,12 +8,12 @@ import org.springframework.context.annotation.Configuration;
 public class DomainConfiguration {
 
     @Bean
-    public TextFinderExecutor getTextFinderExecutor(TextFinder textFinder) {
+    public Executor getTextFinderExecutor(TextFinder textFinder) {
         return new TextFinderExecutor(textFinder);
     }
 
     @Bean
-    public TextFinder getBruceForceTextFinder() {
-        return new BruteForceTextFinder();
+    public TextFinder getBruceForceTextFinder(StreamBridge streamBridge) {
+        return new BruteForceTextFinder(streamBridge);
     }
 }

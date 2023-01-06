@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8082
   servlet:
     context-path: "/"
 
@@ -15,8 +15,6 @@ spring:
       source: input
       bindings:
         input-in-0:
-          destination: destGT
-        output-out-0:
           destination: progress
       default-binder: rabbit
 
