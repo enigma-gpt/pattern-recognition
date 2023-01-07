@@ -39,7 +39,9 @@ class TaskController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/task")
     public List<Object> getAll() {
-        log.info("Get All tasks");
-        return redisTemplate.opsForHash().values("Tasks");
+        log.info("Fetching all tasks");
+        List<Object> tasks =  redisTemplate.opsForHash().values("Tasks");
+        log.info("Retrieved number of tasks {}", tasks.size());
+        return tasks;
     }
 }

@@ -19,7 +19,9 @@ class ResultController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/result")
     public Result getTaskResult(String uuid) {
-        log.info("return task result");
-        return (Result) resultRedisTemplate.opsForHash().get("result", uuid);
+        log.info("Fetching result for uuid {}", uuid);
+        Result result = (Result) resultRedisTemplate.opsForHash().get("result", uuid);
+        log.info("Retrieved result is {}", result);
+        return result;
     }
 }

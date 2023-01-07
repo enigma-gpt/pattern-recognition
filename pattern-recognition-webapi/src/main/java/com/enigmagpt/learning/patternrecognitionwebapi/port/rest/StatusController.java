@@ -19,7 +19,9 @@ class StatusController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/status")
     public Status getStatus(String uuid) {
-        log.info("get status!");
-        return (Status) statusRedisTemplate.opsForHash().get("status", uuid);
+        log.info("Fetching status for uuid {}", uuid);
+        Status status = (Status) statusRedisTemplate.opsForHash().get("status", uuid);
+        log.info("Retrieved status is {}", status);
+        return status;
     }
 }
