@@ -1,5 +1,6 @@
 package com.enigmagpt.learning.patternrecognitionworker.domain
 
+import com.enigmagpt.learning.patternrecognitionfinder.domain.BruteForceTextFinder
 import groovy.util.logging.Slf4j
 import spock.lang.Specification
 
