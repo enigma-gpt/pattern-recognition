@@ -1,4 +1,4 @@
-package com.enigmagpt.learning.patternrecognitionworker;
+package com.enigmagpt.learning.patternrecognitionupdater;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.springframework.boot.SpringApplication;

@@ -3,12 +3,13 @@ package com.enigmagpt.learning.patternrecognitionfinder.domain;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.function.StreamBridge;
+import org.springframework.cloud.stream.function.StreamOperations;
 
 @Slf4j
 @RequiredArgsConstructor
 public class BruteForceTextFinder implements TextFinder {
 
-    private final StreamBridge streamBridge;
+    private final StreamOperations streamBridge;
 
     @Override
     public Result find(String uuid, String input, String pattern) {

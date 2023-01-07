@@ -1,7 +1,6 @@
-package com.enigmagpt.learning.patternrecognitionworker.port.redis;
+package com.enigmagpt.learning.patternrecognitionupdater.port.redis;
 
-import com.enigmagpt.learning.patternrecognitionworker.domain.Progress;
-import org.apache.tools.ant.Task;
+import com.enigmagpt.learning.patternrecognitionupdater.domain.Progress;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;

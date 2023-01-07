@@ -1,12 +1,19 @@
-package com.enigmagpt.learning.patternrecognitionworker.domain
+package com.enigmagpt.learning.patternrecognitionfinder.domain
 
+import com.enigmagpt.learning.patternrecognitionfinder.domain.BruteForceTextFinder
 import groovy.util.logging.Slf4j
+import org.springframework.cloud.stream.function.StreamBridge
+import org.springframework.cloud.stream.function.StreamOperations
 import spock.lang.Specification
 
 @Slf4j
 class BruteForceTextFinderTest extends Specification {
 
-    BruteForceTextFinder finder = new BruteForceTextFinder()
+    def UUID = "70972f67-f2d0-4bd2-9330-b5864e266b53"
+
+    def streamBridge = Mock(StreamOperations)
+
+    BruteForceTextFinder finder = new BruteForceTextFinder(streamBridge)
 
     def "First case"() {
 
@@ -15,7 +22,7 @@ class BruteForceTextFinderTest extends Specification {
         and:
             def pattern = "BCD"
         when:
-            def res = finder.find(input, pattern)
+            def res = finder.find(UUID, input, pattern)
         then:
             res.getPosition() == 1
             res.getTypos() == 0
@@ -28,7 +35,7 @@ class BruteForceTextFinderTest extends Specification {
         and:
             def pattern = "BWD"
         when:
-            def res = finder.find(input, pattern)
+            def res = finder.find(UUID, input, pattern)
         then:
             res.getPosition() == 1
             res.getTypos() == 1
@@ -41,7 +48,7 @@ class BruteForceTextFinderTest extends Specification {
         and:
         def pattern = "CFG"
         when:
-        def res = finder.find(input, pattern)
+        def res = finder.find(UUID, input, pattern)
         then:
         res.getPosition() == 4
         res.getTypos() == 1
@@ -54,7 +61,7 @@ class BruteForceTextFinderTest extends Specification {
         and:
         def pattern = "ABC"
         when:
-        def res = finder.find(input, pattern)
+        def res = finder.find(UUID, input, pattern)
         then:
         res.getPosition() == 0
         res.getTypos() == 0
@@ -67,7 +74,7 @@ class BruteForceTextFinderTest extends Specification {
         and:
         def pattern = "TDD"
         when:
-        def res = finder.find(input, pattern)
+        def res = finder.find(UUID, input, pattern)
         then:
         res.getPosition() == 1
         res.getTypos() == 2
