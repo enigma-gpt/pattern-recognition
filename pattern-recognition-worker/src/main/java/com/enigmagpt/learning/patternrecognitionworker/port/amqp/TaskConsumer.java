@@ -22,9 +22,9 @@ public class TaskConsumer {
     @Bean
     public Consumer<Task> input() {
         return task -> {
-            log.info("Received input {} pattern {}", task.input(), task.pattern());
+            log.info("Received uuid {} input {} pattern {}", task.uuid(), task.input(), task.pattern());
 
-            textFinderExecutor.find(task.input(), task.pattern());
+            textFinderExecutor.find(task.uuid(), task.input(), task.pattern());
         };
     }
 }

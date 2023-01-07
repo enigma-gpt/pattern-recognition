@@ -11,7 +11,7 @@ public class BruteForceTextFinder implements TextFinder {
     private final StreamBridge streamBridge;
 
     @Override
-    public Result find(String input, String pattern) {
+    public Result find(String uuid, String input, String pattern) {
 
         char[] inputArr = input.toCharArray();
         char[] patternArr = pattern.toCharArray();
@@ -39,7 +39,7 @@ public class BruteForceTextFinder implements TextFinder {
                 results[2] = j;
             }
 
-            streamBridge.send("output-out-0", new Progress((j*100)/total));
+            streamBridge.send("output-out-0", new Progress(uuid, (j*100)/total));
 
             log.info("j = " + j + ", matches = " + matches + ", typos = " + typos);
         }
