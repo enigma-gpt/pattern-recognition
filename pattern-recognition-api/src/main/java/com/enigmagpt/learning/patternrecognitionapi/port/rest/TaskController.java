@@ -30,7 +30,7 @@ class TaskController {
         log.info("Create called with parameters input {} pattern {}", taskDto.input(), taskDto.pattern());
         UUID uuid = UUID.randomUUID();
         redisTemplate.opsForHash().put("Tasks", uuid.toString(), new Task(uuid.toString(), taskDto.input(), taskDto.pattern()));
-        log.info("Created an entry with a key {}", redisTemplate.opsForHash().entries("Results"));
+        log.info("Created an entry with a key {}", redisTemplate.opsForHash().entries("Tasks"));
         streamBridge.send("output-out-0", TaskAdapter.of(uuid, taskDto));
         log.info("Message was sent with data {}", taskDto);
         return uuid.toString();

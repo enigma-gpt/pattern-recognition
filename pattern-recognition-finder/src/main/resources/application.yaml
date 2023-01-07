@@ -16,8 +16,10 @@ spring:
       bindings:
         input-in-0:
           destination: destGT
-        output-out-0:
-          destination: progress
+        status-out-0:
+          destination: status
+        result-out-0:
+          destination: result
       default-binder: rabbit
 
   redis:

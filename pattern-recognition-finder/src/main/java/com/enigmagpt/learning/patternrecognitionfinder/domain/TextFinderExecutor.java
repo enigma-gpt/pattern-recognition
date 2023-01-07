@@ -11,7 +11,7 @@ public class TextFinderExecutor implements Executor {
     public Result find(String uuid, String input, String pattern) {
         log.info("Executing text finder");
         Result result = textFinder.find(uuid, input, pattern);
-        log.info("Finished text finder: pos {}, typos {}", result.getPosition(), result.getTypos());
+        log.info("Finished text finder: pos {}, typos {}", result.position(), result.typos());
         return result;
     }
 }

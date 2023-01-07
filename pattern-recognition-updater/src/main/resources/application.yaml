@@ -14,8 +14,10 @@ spring:
     stream:
       source: input
       bindings:
-        input-in-0:
-          destination: progress
+        status-in-0:
+          destination: status
+        result-in-0:
+          destination: result
       default-binder: rabbit
 
   redis:

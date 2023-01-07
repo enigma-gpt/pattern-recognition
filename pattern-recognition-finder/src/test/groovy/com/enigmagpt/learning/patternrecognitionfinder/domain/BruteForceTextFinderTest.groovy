@@ -24,8 +24,8 @@ class BruteForceTextFinderTest extends Specification {
         when:
             def res = finder.find(UUID, input, pattern)
         then:
-            res.getPosition() == 1
-            res.getTypos() == 0
+            res.position() == 1
+            res.typos() == 0
     }
 
     def "Second case"() {
@@ -37,8 +37,8 @@ class BruteForceTextFinderTest extends Specification {
         when:
             def res = finder.find(UUID, input, pattern)
         then:
-            res.getPosition() == 1
-            res.getTypos() == 1
+            res.position() == 1
+            res.typos() == 1
     }
 
     def "Third case"() {
@@ -50,8 +50,8 @@ class BruteForceTextFinderTest extends Specification {
         when:
         def res = finder.find(UUID, input, pattern)
         then:
-        res.getPosition() == 4
-        res.getTypos() == 1
+        res.position() == 4
+        res.typos() == 1
     }
 
     def "Forth case"() {
@@ -63,8 +63,8 @@ class BruteForceTextFinderTest extends Specification {
         when:
         def res = finder.find(UUID, input, pattern)
         then:
-        res.getPosition() == 0
-        res.getTypos() == 0
+        res.position() == 0
+        res.typos() == 0
     }
 
     def "Fifth case"() {
@@ -76,7 +76,7 @@ class BruteForceTextFinderTest extends Specification {
         when:
         def res = finder.find(UUID, input, pattern)
         then:
-        res.getPosition() == 1
-        res.getTypos() == 2
+        res.position() == 1
+        res.typos() == 2
     }
 }

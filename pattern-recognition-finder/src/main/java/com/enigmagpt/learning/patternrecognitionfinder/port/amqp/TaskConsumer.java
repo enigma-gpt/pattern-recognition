@@ -1,5 +1,6 @@
 package com.enigmagpt.learning.patternrecognitionfinder.port.amqp;
 
+import com.enigmagpt.learning.patternrecognitionfinder.domain.Result;
 import com.enigmagpt.learning.patternrecognitionfinder.domain.Task;
 import com.enigmagpt.learning.patternrecognitionfinder.domain.Executor;
 import lombok.RequiredArgsConstructor;
@@ -14,9 +15,7 @@ import java.util.function.Consumer;
 @RequiredArgsConstructor
 @Service
 public class TaskConsumer {
-
     private final Executor textFinderExecutor;
-
     private final StreamBridge streamBridge;
 
     @Bean
@@ -24,7 +23,9 @@ public class TaskConsumer {
         return task -> {
             log.info("Received uuid {} input {} pattern {}", task.uuid(), task.input(), task.pattern());
 
-            textFinderExecutor.find(task.uuid(), task.input(), task.pattern());
+            Result result = textFinderExecutor.find(task.uuid(), task.input(), task.pattern());
+
+            streamBridge.send("result-in-0", result);
         };
     }
 }

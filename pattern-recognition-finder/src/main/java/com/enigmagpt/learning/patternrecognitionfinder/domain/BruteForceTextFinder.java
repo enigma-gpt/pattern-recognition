@@ -45,6 +45,6 @@ public class BruteForceTextFinder implements TextFinder {
             log.info("j = " + j + ", matches = " + matches + ", typos = " + typos);
         }
 
-        return new Result(results[2],results[1]);
+        return new Result(uuid, results[2], results[1]);
     }
 }
