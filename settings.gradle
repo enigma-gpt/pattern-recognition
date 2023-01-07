@@ -9,6 +9,6 @@
 
 rootProject.name = 'pattern-recognition'
 
-include 'pattern-recognition-webapi'
+include 'pattern-recognition-api'
 include 'pattern-recognition-finder'
 include 'pattern-recognition-updater'
