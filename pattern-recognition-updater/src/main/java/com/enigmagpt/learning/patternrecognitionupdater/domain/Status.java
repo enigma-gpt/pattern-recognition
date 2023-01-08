@@ -1,3 +1,5 @@
 package com.enigmagpt.learning.patternrecognitionupdater.domain;
 
-public record Status(String uuid, int progressPercentage) { }
+import java.io.Serializable;
+
+public record Status(String uuid, int progressPercentage) implements Serializable { }

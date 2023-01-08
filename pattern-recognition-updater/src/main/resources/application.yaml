@@ -11,8 +11,9 @@ spring:
     password: guest
 
   cloud:
+    function:
+      definition: status;result
     stream:
-      source: input
       bindings:
         status-in-0:
           destination: status

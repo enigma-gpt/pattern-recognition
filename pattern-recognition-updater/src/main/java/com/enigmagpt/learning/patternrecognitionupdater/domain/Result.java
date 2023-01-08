@@ -1,3 +1,5 @@
 package com.enigmagpt.learning.patternrecognitionupdater.domain;
 
-public record Result (String uuid, int position, int typos) {}
+import java.io.Serializable;
+
+public record Result (String uuid, int position, int typos) implements Serializable {}

@@ -12,7 +12,6 @@ spring:
 
   cloud:
     stream:
-      source: input
       bindings:
         input-in-0:
           destination: destGT

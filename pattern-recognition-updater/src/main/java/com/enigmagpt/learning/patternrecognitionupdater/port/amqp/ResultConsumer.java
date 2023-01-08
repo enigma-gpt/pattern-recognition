@@ -17,11 +17,11 @@ public class ResultConsumer {
     private final RedisTemplate<String, Result> redisTemplate;
 
     @Bean
-    public Consumer<Result> consumeResult() {
+    public Consumer<Result> result() {
         return result -> {
             log.info("Received result uuid {} and content {}", result.uuid(), result);
 
-            redisTemplate.opsForHash().put("Status", result.uuid(), result);
+            redisTemplate.opsForHash().put("Result", result.uuid(), result);
         };
     }
 }

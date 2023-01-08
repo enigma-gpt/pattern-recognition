@@ -20,7 +20,7 @@ class ResultController {
     @GetMapping("/result")
     public Result getTaskResult(String uuid) {
         log.info("Fetching result for uuid {}", uuid);
-        Result result = (Result) resultRedisTemplate.opsForHash().get("result", uuid);
+        Result result = (Result) resultRedisTemplate.opsForHash().get("Result", uuid);
         log.info("Retrieved result is {}", result);
         return result;
     }

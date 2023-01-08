@@ -25,7 +25,7 @@ public class TaskConsumer {
 
             Result result = textFinderExecutor.find(task.uuid(), task.input(), task.pattern());
 
-            streamBridge.send("result-in-0", result);
+            streamBridge.send("result-out-0", result);
         };
     }
 }

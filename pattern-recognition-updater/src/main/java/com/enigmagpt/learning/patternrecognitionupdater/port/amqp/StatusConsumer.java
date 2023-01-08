@@ -17,11 +17,11 @@ public class StatusConsumer {
     private final RedisTemplate<String, Status> redisTemplate;
 
     @Bean
-    public Consumer<Status> consumeStatus() {
+    public Consumer<Status> status() {
         return status -> {
-            log.info("Received status {} ", status.progressPercentage());
-
-            redisTemplate.opsForHash().put("Status", status.uuid(), status.progressPercentage());
+            log.info("Received status {} for uuid {} ", status.progressPercentage(), status.uuid());
+            redisTemplate.opsForHash().put("Statuss", status.uuid(), status);
+            log.info("Saved status with uuid {} ", status.uuid());
         };
     }
 }

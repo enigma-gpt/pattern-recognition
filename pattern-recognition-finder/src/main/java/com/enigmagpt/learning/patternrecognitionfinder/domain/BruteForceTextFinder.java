@@ -40,7 +40,7 @@ public class BruteForceTextFinder implements TextFinder {
                 results[2] = j;
             }
 
-            streamBridge.send("output-out-0", new Progress(uuid, (j*100)/total));
+            streamBridge.send("status-out-0", new Progress(uuid, (j*100)/total));
 
             log.info("j = " + j + ", matches = " + matches + ", typos = " + typos);
         }
