@@ -1,5 +1,6 @@
 package com.enigmagpt.learning.patternrecognitionfinder.domain;
 
+import com.enigmagpt.learning.patternrecognitioncommon.domain.FinalStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -8,10 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 public class TextFinderExecutor implements Executor {
     private final TextFinder textFinder;
 
-    public Result find(String uuid, String input, String pattern) {
+    public FinalStatus find(String uuid, String input, String pattern) {
         log.info("Executing text finder");
-        Result result = textFinder.find(uuid, input, pattern);
-        log.info("Finished text finder: pos {}, typos {}", result.position(), result.typos());
+        FinalStatus result = textFinder.find(uuid, input, pattern);
+        log.info("Finished text finder: pos {}, typos {}", result.getPosition(), result.getTypos());
         return result;
     }
 }

@@ -17,8 +17,6 @@ spring:
       bindings:
         status-in-0:
           destination: status
-        result-in-0:
-          destination: result
       default-binder: rabbit
 
   redis:

@@ -1,24 +1,5 @@
 version: "3.2"
 services:
-
-  pattern-recognition-api:
-    image: enigmagpt/pattern-recognition-api:0.0.1-SNAPSHOT
-    container_name: 'api'
-    ports:
-      - 8080:8080
-
-  pattern-recognition-finder:
-    image: enigmagpt/pattern-recognition-finder:0.0.1-SNAPSHOT
-    container_name: 'finder'
-    ports:
-      - 8081:8081
-
-  pattern-recognition-updater:
-    image: enigmagpt/pattern-recognition-updater:0.0.1-SNAPSHOT
-    container_name: 'updater'
-    ports:
-      - 8082:8082
-
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: 'rabbitmq'
@@ -29,14 +10,14 @@ services:
       - ~/.docker-conf/rabbitmq/data/:/home/grzegorz/dev/rabbitmq/data
       - ~/.docker-conf/rabbitmq/log/:/home/grzegorz/dev/rabbitmq/log
 
-  cache:
+  redis:
     image: redis:6.2-alpine
+    container_name: 'redis'
     restart: always
     ports:
       - '6379:6379'
     volumes:
       - cache:/data
-
 
 volumes:
   cache:

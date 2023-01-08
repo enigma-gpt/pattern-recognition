@@ -1,4 +1,4 @@
-package com.enigmagpt.learning.patternrecognitionfinder.domain;
+package com.enigmagpt.learning.patternrecognitioncommon.domain;
 
 import java.io.Serializable;
 

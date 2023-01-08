@@ -1,6 +1,8 @@
 package com.enigmagpt.learning.patternrecognitionfinder.domain;
 
+import com.enigmagpt.learning.patternrecognitioncommon.domain.FinalStatus;
+
 public interface TextFinder {
 
-    Result find(String uuid, String input, String pattern);
+    FinalStatus find(String uuid, String input, String pattern);
 }

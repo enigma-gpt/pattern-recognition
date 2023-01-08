@@ -1,7 +1,7 @@
 package com.enigmagpt.learning.patternrecognitionupdater.port.redis;
 
-import com.enigmagpt.learning.patternrecognitionupdater.domain.Result;
-import com.enigmagpt.learning.patternrecognitionupdater.domain.Status;
+import com.enigmagpt.learning.patternrecognitioncommon.domain.FinalStatus;
+import com.enigmagpt.learning.patternrecognitioncommon.domain.Status;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -20,9 +20,9 @@ public class RedisConfiguration {
     }
 
     @Bean
-    public RedisTemplate<String, Result> resultRedisTemplate(RedisConnectionFactory connectionFactory) {
-        RedisTemplate<String, Result> template = new RedisTemplate<>();
-        template.setValueSerializer(new Jackson2JsonRedisSerializer<>(Result.class));
+    public RedisTemplate<String, FinalStatus> resultRedisTemplate(RedisConnectionFactory connectionFactory) {
+        RedisTemplate<String, FinalStatus> template = new RedisTemplate<>();
+        template.setValueSerializer(new Jackson2JsonRedisSerializer<>(FinalStatus.class));
         template.setConnectionFactory(connectionFactory);
         return template;
     }

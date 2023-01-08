@@ -1,6 +1,6 @@
 package com.enigmagpt.learning.patternrecognitionapi.port.rest;
 
-import com.enigmagpt.learning.patternrecognitionapi.domain.Status;
+import com.enigmagpt.learning.patternrecognitioncommon.domain.Status;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;

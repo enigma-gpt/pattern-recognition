@@ -1,8 +1,9 @@
 package com.enigmagpt.learning.patternrecognitionfinder.domain;
 
+import com.enigmagpt.learning.patternrecognitioncommon.domain.FinalStatus;
+import com.enigmagpt.learning.patternrecognitioncommon.domain.Status;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.cloud.stream.function.StreamOperations;
 
 @Slf4j
@@ -12,7 +13,7 @@ public class BruteForceTextFinder implements TextFinder {
     private final StreamOperations streamBridge;
 
     @Override
-    public Result find(String uuid, String input, String pattern) {
+    public FinalStatus find(String uuid, String input, String pattern) {
 
         char[] inputArr = input.toCharArray();
         char[] patternArr = pattern.toCharArray();
@@ -40,11 +41,11 @@ public class BruteForceTextFinder implements TextFinder {
                 results[2] = j;
             }
 
-            streamBridge.send("status-out-0", new Progress(uuid, (j*100)/total));
+            streamBridge.send("status-out-0", new Status(uuid, (j*100)/total));
 
             log.info("j = " + j + ", matches = " + matches + ", typos = " + typos);
         }
 
-        return new Result(uuid, results[2], results[1]);
+        return new FinalStatus(uuid, results[2], results[1]);
     }
 }

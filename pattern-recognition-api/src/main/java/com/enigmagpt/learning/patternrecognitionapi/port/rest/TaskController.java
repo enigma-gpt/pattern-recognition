@@ -1,7 +1,7 @@
 package com.enigmagpt.learning.patternrecognitionapi.port.rest;
 
-import com.enigmagpt.learning.patternrecognitionapi.domain.Task;
 import com.enigmagpt.learning.patternrecognitionapi.domain.TaskAdapter;
+import com.enigmagpt.learning.patternrecognitioncommon.domain.Task;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.function.StreamBridge;

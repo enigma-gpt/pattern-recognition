@@ -1,6 +1,6 @@
 package com.enigmagpt.learning.patternrecognitionapi.port.rest;
 
-import com.enigmagpt.learning.patternrecognitionapi.domain.Result;
+import com.enigmagpt.learning.patternrecognitioncommon.domain.FinalStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class ResultController {
 
-    private final RedisTemplate<String, Result> resultRedisTemplate;
+    private final RedisTemplate<String, FinalStatus> resultRedisTemplate;
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/result")
-    public Result getTaskResult(String uuid) {
+    public FinalStatus getTaskResult(String uuid) {
         log.info("Fetching result for uuid {}", uuid);
-        Result result = (Result) resultRedisTemplate.opsForHash().get("Result", uuid);
+        FinalStatus result = (FinalStatus) resultRedisTemplate.opsForHash().get("Result", uuid);
         log.info("Retrieved result is {}", result);
         return result;
     }

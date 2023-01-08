@@ -1,6 +1,7 @@
 package com.enigmagpt.learning.patternrecognitionupdater.port.amqp;
 
-import com.enigmagpt.learning.patternrecognitionupdater.domain.Status;
+import com.enigmagpt.learning.patternrecognitioncommon.domain.FinalStatus;
+import com.enigmagpt.learning.patternrecognitioncommon.domain.Status;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -19,9 +20,12 @@ public class StatusConsumer {
     @Bean
     public Consumer<Status> status() {
         return status -> {
-            log.info("Received status {} for uuid {} ", status.progressPercentage(), status.uuid());
-            redisTemplate.opsForHash().put("Statuss", status.uuid(), status);
-            log.info("Saved status with uuid {} ", status.uuid());
+            log.info("Received status {} for uuid {} ", status.getProgressPercentage(), status.getUuid());
+            redisTemplate.opsForHash().put("Statuss", status.getUuid(), status);
+            log.info("Saved status with uuid {} ", status.getUuid());
+            if (status instanceof FinalStatus finalStatus) {
+                redisTemplate.opsForHash().put("Result", status.getUuid(), finalStatus);
+            }
         };
     }
 }

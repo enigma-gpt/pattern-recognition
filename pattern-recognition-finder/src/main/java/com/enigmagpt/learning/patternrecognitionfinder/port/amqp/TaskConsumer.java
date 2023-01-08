@@ -1,7 +1,7 @@
 package com.enigmagpt.learning.patternrecognitionfinder.port.amqp;
 
-import com.enigmagpt.learning.patternrecognitionfinder.domain.Result;
-import com.enigmagpt.learning.patternrecognitionfinder.domain.Task;
+import com.enigmagpt.learning.patternrecognitioncommon.domain.FinalStatus;
+import com.enigmagpt.learning.patternrecognitioncommon.domain.Task;
 import com.enigmagpt.learning.patternrecognitionfinder.domain.Executor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class TaskConsumer {
         return task -> {
             log.info("Received uuid {} input {} pattern {}", task.uuid(), task.input(), task.pattern());
 
-            Result result = textFinderExecutor.find(task.uuid(), task.input(), task.pattern());
+            FinalStatus result = textFinderExecutor.find(task.uuid(), task.input(), task.pattern());
 
             streamBridge.send("result-out-0", result);
         };

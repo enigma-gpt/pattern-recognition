@@ -17,8 +17,6 @@ spring:
           destination: destGT
         status-out-0:
           destination: status
-        result-out-0:
-          destination: result
       default-binder: rabbit
 
   redis:
